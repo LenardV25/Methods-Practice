@@ -3,7 +3,7 @@ public class MethodPractice {
         // This main method will test all your implementations
         System.out.println("=== TESTING RETURN TYPES ===");
         System.out.println("Rectangle area (4x5): " + calculateRectangleArea(4, 5));
-        //System.out.println("Triangle area (6x3): " + calculateTriangleArea(6, 3));
+        System.out.println("Triangle area (6x3): " + calculateTriangleArea(6, 3));
         System.out.println();
 
         System.out.println("=== TESTING PARAMETERS ===");
@@ -46,26 +46,39 @@ public class MethodPractice {
     // TODO: Complete this method to return the area of a rectangle
     public static double calculateRectangleArea(double length, double width) {
         // Your code here
-        return 0.0; // placeholder return
+        return (length * width); // placeholder return
     }
 
     // TODO: Create a method to calculate the area of a triangle
-    // public static double calculateTriangleArea(double base, double height) {
-    //    // Your code here
-    // }
+    public static double calculateTriangleArea(double base, double height) {
+        
+        // Your code here
+        return ((base * height) / 2);
+     }
+
 
     // === EXERCISE 2: PARAMETER TYPES ===
     
     // TODO: Complete this method to combine first and last name
     public static String formatFullName(String firstName, String lastName) {
         // Your code here
-        return ""; // placeholder return
+        return ((firstName) + " " + (lastName)); // placeholder return
     }
 
     // TODO: Complete this method to return a letter grade based on score
     public static String calculateLetterGrade(int score) {
         // Your code here
-        return ""; // placeholder return
+        String grade;
+        if (score < 60) {
+            grade = "F";
+        } else if (score >= 60 && score < 70) {
+            grade = "D";
+        } else if (score >= 70 && score < 80) {
+            grade = "C";
+        } else if (score >= 80 && score < 90) {
+            grade = "B";
+        } else grade = "A";
+        return grade; // placeholder return
     }
 
     // === EXERCISE 3: PRIMITIVE VS REFERENCE TYPES ===
@@ -73,19 +86,25 @@ public class MethodPractice {
     // TODO: Complete this method that tries to double a primitive value
     public static void tryToDoubleValue(int value) {
         // Your code here
+        value = 4;
+
     }
 
     // TODO: Complete this method to double all values in an array
     public static void doubleArrayValues(int[] values) {
         // Your code here
+        values[0] = 10;
+
     }
 
     // This method tests your implementations
     public static void testPrimitiveVsReference() {
         // Test primitive parameter
         int number = 5;
+
         System.out.println("Before tryToDoubleValue: " + number);
         tryToDoubleValue(number);
+
         System.out.println("After tryToDoubleValue: " + number);
         
         // Test reference parameter
@@ -114,7 +133,9 @@ public class MethodPractice {
     // TODO: Complete this method to calculate the area of a circle
     public static double calculateCircleArea(double radius) {
         // Your code here
-        return 0.0; // placeholder return
+        double area = (Math.PI * radius * radius);
+
+        return area; // placeholder return
     }
     
     // === EXERCISE 5: CAPTURING RETURN VALUES ===
@@ -122,19 +143,25 @@ public class MethodPractice {
     // TODO: Complete this method to calculate a number raised to a power
     public static double power(double base, int exponent) {
         // Your code here
-        return 0.0; // placeholder return
+        double answ = 0.0;
+        answ = Math.pow(base, exponent);
+        return answ; // placeholder return
     }
     
+
     // TODO: Complete this method to demonstrate the three ways to capture return values
     public static void testCapturingReturnValues() {
         // 1. Store in a variable
         // Your code here
+        int result = 5;
         
         // 2. Use in an expression
         // Your code here
+        System.out.println(result);
         
         // 3. Pass to another method
         // Your code here
+        displayResult(result);
     }
     
     // Helper method for demonstrating return value capturing
