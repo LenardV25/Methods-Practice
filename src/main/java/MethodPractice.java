@@ -145,7 +145,7 @@ public class MethodPractice {
         // Your code here
         double answ = 0.0;
         answ = Math.pow(base, exponent);
-        return answ; // placeholder return
+        return answ; 
     }
     
 
@@ -178,21 +178,31 @@ public class MethodPractice {
         }
         // Missing code here - causes a compiler error!
     }
+        */
     
     // TODO: Complete this method to return a letter grade, ensuring all paths return a value
     public static String getLetterGrade(int score) {
+        // Your code here
         if (score >= 90) {
             return "A";
         }
-        if (score >= 80) {
+        else if (score >= 80) {
             return "B";
         }
-        // Your code here
+        else if (score >= 70) {
+            return "C";
+        }
+        else if (score >= 60) {
+            return "D";
+        }
+        else {
+            return "F";
+        }
         
         // Make sure all paths return a value!
     }
 
-    */
+    
     
     // === EXERCISE 7: VARIABLE SCOPE ===
     
