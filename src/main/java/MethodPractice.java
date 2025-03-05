@@ -78,22 +78,22 @@ public class MethodPractice {
         } else if (score >= 80 && score < 90) {
             grade = "B";
         } else grade = "A";
-        return grade; // placeholder return
+        return grade; 
     }
 
     // === EXERCISE 3: PRIMITIVE VS REFERENCE TYPES ===
     
     // TODO: Complete this method that tries to double a primitive value
-    public static void tryToDoubleValue(int value) {
+    public static int tryToDoubleValue(int value) {
         // Your code here
-        value = 4;
+        value = value*2;
 
+        return value;
     }
 
     // TODO: Complete this method to double all values in an array
     public static void doubleArrayValues(int[] values) {
         // Your code here
-        values[0] = 10;
 
     }
 
@@ -103,16 +103,19 @@ public class MethodPractice {
         int number = 5;
 
         System.out.println("Before tryToDoubleValue: " + number);
-        tryToDoubleValue(number);
+        number = tryToDoubleValue(number);
 
         System.out.println("After tryToDoubleValue: " + number);
         
         // Test reference parameter
+        int[] multiple = {1, 2, 3, 4, 5,};
         int[] numbers = {1, 2, 3, 4, 5};
-        System.out.print("Before doubleArrayValues: ");
+
+        System.out.print("Before doubleArrayValues: " );
         printArray(numbers);
+
         doubleArrayValues(numbers);
-        System.out.print("After doubleArrayValues: ");
+        System.out.print("After doubleArrayValues: " );
         printArray(numbers);
     }
     
