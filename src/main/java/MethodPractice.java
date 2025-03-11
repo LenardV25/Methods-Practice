@@ -24,13 +24,13 @@ public class MethodPractice {
         System.out.println();
 
         System.out.println("=== TESTING ALL PATHS RETURN ===");
-        //System.out.println("Max of 10 and 20: " + findMax(10, 20));
-        //System.out.println("Grade for 75: " + getLetterGrade(75));
+        System.out.println("Max of 10 and 20: " + findMax(10, 20));
+        System.out.println("Grade for 75: " + getLetterGrade(75));
         System.out.println();
 
         System.out.println("=== TESTING VARIABLE SCOPE ===");
         testVariableScope();
-        scopeExample();
+        scopeExample(0);
         System.out.println();
 
         System.out.println("=== TESTING PASS BY VALUE ===");
@@ -87,13 +87,16 @@ public class MethodPractice {
     public static int tryToDoubleValue(int value) {
         // Your code here
         value = value*2;
-
         return value;
     }
 
     // TODO: Complete this method to double all values in an array
     public static void doubleArrayValues(int[] values) {
         // Your code here
+        for (int i = 0; i < values.length; i ++) {
+            values[i] *=2;
+        }
+        
 
     }
 
@@ -101,19 +104,15 @@ public class MethodPractice {
     public static void testPrimitiveVsReference() {
         // Test primitive parameter
         int number = 5;
-
         System.out.println("Before tryToDoubleValue: " + number);
         number = tryToDoubleValue(number);
-
         System.out.println("After tryToDoubleValue: " + number);
         
-        // Test reference parameter
-        int[] multiple = {1, 2, 3, 4, 5,};
-        int[] numbers = {1, 2, 3, 4, 5};
 
+        // Test reference parameter
+        int[] numbers = {1, 2, 3, 4, 5};
         System.out.print("Before doubleArrayValues: " );
         printArray(numbers);
-
         doubleArrayValues(numbers);
         System.out.print("After doubleArrayValues: " );
         printArray(numbers);
@@ -173,15 +172,16 @@ public class MethodPractice {
     }
     
     // === EXERCISE 6: ALL PATHS MUST RETURN Remove the MultiLine Comments when you get here ===
-    /* 
     // TODO: Fix this method to return the larger of two numbers
     public static int findMax(int a, int b) {
         if (a > b) {
-            return a;
+            return a;   //a case
         }
-        // Missing code here - causes a compiler error!
+        else {
+            return b;   //b case
+        }
     }
-        */
+        
     
     // TODO: Complete this method to return a letter grade, ensuring all paths return a value
     public static String getLetterGrade(int score) {
@@ -212,24 +212,35 @@ public class MethodPractice {
     // TODO: Complete this method to demonstrate variable scope
     public static void testVariableScope() {
         // Declare a variable in this scope
-        
         // Create an if block and declare a variable inside it
-        
         // Try to print a variable from another scope
-        
         // Your code here
+
+        int x = 10;
+        if (x > 5) {
+            int y = 20;
+            System.out.println("y: " + y);
+        } else {
+            scopeExample(x);
+        }
+        
+
     }
     
     // TODO: Fix this method that has a scope error
-    public static void scopeExample() {
-        if (true) {
-            int x = 10;
-        }
-        
-        // This line has an error because x is not in scope
-        // System.out.println(x);
-        
+    public static void scopeExample(int x) {
+       
+         // This line has an error because x is not in scope
         // Your fix here
+        if (true) {
+            x = 10;
+        } else {
+            x = 10;
+        }
+        System.out.println("x from scopeExample: " + x);
+        
+       
+
     }
     
     // === EXERCISE 8: PASS BY VALUE ===
@@ -255,11 +266,28 @@ public class MethodPractice {
     // TODO: Implement this method that attempts to swap two integer values
     public static void swapValues(int a, int b) {
         // Your code here
+        a = 100;
+        b = 300;
     }
     
     // TODO: Implement this method to reverse the contents of an array
     public static void reverseArray(int[] arr) {
         // Your code here
+        int left = 0;
+        int right = arr.length - 1;
+
+        // Loop to swap elements from both ends towards the center
+        while (left < right) {
+
+            // Swap the elements at the left and right pointers
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            
+            // Move towards the center
+            left++;
+            right--;
+        }        
     }
     
     // === FINAL EXERCISE ===
@@ -267,15 +295,45 @@ public class MethodPractice {
     // TODO: Implement a method to calculate the average of an array of integers
     public static double calculateAverage(int[] numbers) {
         // Your code here
-        return 0.0; // placeholder return
+         // placeholder return
+        int average = 0;
+
+        for (int num : numbers) {
+            average += num;
+        }
+        return (double) average / numbers.length;
+
+        
+
     }
     
     // TODO: Implement a method to remove all vowels from a string
     public static String removeVowels(String input) {
         // Your code here
-        return ""; // placeholder return
+        // Convert input string to lowercase for case-insensitive comparison
+        StringBuilder result = new StringBuilder();
+        
+        // Iterate through each character of the input string
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            
+            // If the character is not a vowel, add it to the result
+            if (!isVowel(c)) {
+                result.append(c);
+            }
+        }
+        
+        // Return the modified string without vowels
+        return result.toString();
     }
     
+    // Helper method to check if a character is a vowel
+    private static boolean isVowel(char c) {
+        // Convert character to lowercase and check if it's a vowel
+        c = Character.toLowerCase(c);
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+
     // This method tests your final exercise implementations
     public static void testFinalExercise() {
         // Test calculateAverage
